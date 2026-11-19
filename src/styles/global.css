@@ -67,3 +67,13 @@ a { color: var(--color-primary); }
 }
 .navbar__links a:hover { color: var(--color-primary); }
 .navbar__links a.active { border-bottom-color: var(--color-accent); font-weight: bold; }
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  padding: var(--space-4) var(--space-3);
+  background: var(--color-primary);
+  color: #fff;
+}
+.footer__tagline { font-family: var(--font-heading); margin: 0 0 var(--space-1); }
+.footer__copy { margin: 0; font-size: 0.85rem; opacity: 0.8; }
