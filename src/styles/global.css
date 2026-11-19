@@ -1,0 +1,32 @@
+/* ---------- Design tokens (Leaf & Living brief) ---------- */
+:root {
+  --color-bg: #F7F5EF;          /* warm ivory */
+  --color-text: #24352B;        /* charcoal green */
+  --color-primary: #28513B;     /* forest green: buttons */
+  --color-accent: #B86C4B;      /* terracotta: decorative */
+  --color-card: #FFFFFF;
+  --color-border: #DDD8CB;
+  --color-error: #B3261E;
+  --color-success: #2E7D32;
+
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body: Arial, Helvetica, sans-serif;
+
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 1rem;
+  --space-4: 1.5rem;  --space-5: 2.5rem;
+  --radius: 10px;
+  --content-width: 1100px;
+}
+
+/* ---------- Reset and base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+h1, h2, h3 { font-family: var(--font-heading); line-height: 1.2; margin: 0 0 var(--space-3); }
+img { max-width: 100%; display: block; }
+a { color: var(--color-primary); }
