@@ -142,3 +142,11 @@ input:focus-visible, select:focus-visible, textarea:focus-visible,
 .status--error { background: #FDECEA; color: var(--color-error); }
 .status--success { background: #E8F5E9; color: var(--color-success); }
 .status--empty { text-align: center; color: #5a6b60; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .navbar { justify-content: center; text-align: center; }
+  .navbar__links { gap: var(--space-3); }
+  .content { padding: var(--space-3) var(--space-2); }
+  .product-grid { grid-template-columns: 1fr; }
+}
