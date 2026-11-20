@@ -7,7 +7,7 @@ import AddProduct from './pages/AddProduct'
 import EditProduct from './pages/EditProduct'
 import NotFound from './pages/NotFound'
 import useProducts from './hooks/useProducts'
-import Navbar from './components/Navbar'
+import Navbar from './components/NavBar'
 import Footer from './components/Footer'
 export default function App() {
   // useProducts is called once here: the single source of truth for product data.
