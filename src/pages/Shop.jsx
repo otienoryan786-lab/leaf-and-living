@@ -1,7 +1,7 @@
  import { useMemo, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 
-const CARE_LEVELS = ['All', 'Easy', 'Moderate', 'Expert']
+const CARE_LEVELS = ['All', 'Easy', 'Moderate', 'Experienced']
 
 export default function Shop({
   products = [],
@@ -21,11 +21,13 @@ export default function Shop({
       const name = (product.name || '').toLowerCase()
       const description = (product.description || '').toLowerCase()
       const care = (product.careLevel || product.care_level || '').toLowerCase()
+      const category = (product.category || '').toLowerCase()
 
       const matchesSearch =
         normalizedQuery === '' ||
         name.includes(normalizedQuery) ||
-        description.includes(normalizedQuery)
+        description.includes(normalizedQuery) ||
+        category.includes(normalizedQuery)
 
       const matchesCare =
         selectedCare === 'All' || care === selectedCare.toLowerCase()

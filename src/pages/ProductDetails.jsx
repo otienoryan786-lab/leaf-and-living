@@ -76,7 +76,7 @@ function ProductDetailsContent({ product }) {
   const displayCare = careLevel || care_level || 'Easy'
   const numericPrice = Number(price)
   const formattedPrice = Number.isFinite(numericPrice)
-    ? `$${numericPrice.toFixed(2)}`
+    ? `KES ${numericPrice.toLocaleString()}`
     : 'Price unavailable'
 
   return (
