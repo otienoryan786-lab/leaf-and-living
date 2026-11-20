@@ -1,5 +1,4 @@
  import { useMemo, useState } from 'react'
-import NavBar from '../components/NavBar'
 import ProductCard from '../components/ProductCard'
 
 const CARE_LEVELS = ['All', 'Easy', 'Moderate', 'Expert']
@@ -42,7 +41,6 @@ export default function Shop({
 
   return (
     <div className="page-shell">
-      <NavBar />
 
       <main className="container main-content">
         <header className="shop-header">

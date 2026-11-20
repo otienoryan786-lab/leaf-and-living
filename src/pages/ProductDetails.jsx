@@ -1,5 +1,4 @@
  import { Link, useParams } from 'react-router-dom'
-import NavBar from '../components/NavBar'
 
 const FALLBACK_IMAGE =
   'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&w=800&q=80'
@@ -16,7 +15,6 @@ export default function ProductDetails({
 
   return (
     <div className="page-wrapper">
-      <NavBar />
 
       <main className="container details-main">
         <div className="details-back-row">
