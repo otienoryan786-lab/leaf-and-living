@@ -1,6 +1,4 @@
 import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
 import ProductDetails from './pages/ProductDetails'
@@ -9,28 +7,62 @@ import AddProduct from './pages/AddProduct'
 import EditProduct from './pages/EditProduct'
 import NotFound from './pages/NotFound'
 import useProducts from './hooks/useProducts'
-
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 export default function App() {
   // useProducts is called once here: the single source of truth for product data.
-  const { products, loading, loadError, refreshProducts,
-          addProduct, updateProduct, deleteProduct } = useProducts()
-
-  // Every page receives the same props, so teammates never need to edit this file.
-  // Pages take what they need, e.g. function Shop({ products = [], loading, loadError, refreshProducts }) {}
-  const data = { products, loading, loadError, refreshProducts,
-                 addProduct, updateProduct, deleteProduct }
+  const {
+    products,
+    loading,
+    loadError,
+    refreshProducts,
+    addProduct,
+    updateProduct,
+    deleteProduct,
+  } = useProducts()
 
   return (
     <div className="app">
       <Navbar />
       <main className="content">
         <Routes>
-          <Route path="/" element={<Home {...data} />} />
-          <Route path="/shop" element={<Shop {...data} />} />
-          <Route path="/products/:id" element={<ProductDetails {...data} />} />
-          <Route path="/admin" element={<Admin {...data} />} />
-          <Route path="/admin/products/new" element={<AddProduct {...data} />} />
-          <Route path="/admin/products/:id/edit" element={<EditProduct {...data} />} />
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/shop"
+            element={
+              <Shop
+                products={products}
+                loading={loading}
+                loadError={loadError}
+                onRetry={refreshProducts}
+              />
+            }
+          />
+          <Route
+            path="/products/:id"
+            element={<ProductDetails products={products} loading={loading} />}
+          />
+          <Route
+            path="/admin"
+            element={
+              <Admin
+                products={products}
+                loading={loading}
+                loadError={loadError}
+                deleteProduct={deleteProduct}
+              />
+            }
+          />
+          <Route
+            path="/admin/products/new"
+            element={<AddProduct addProduct={addProduct} />}
+          />
+          <Route
+            path="/admin/products/:id/edit"
+            element={
+              <EditProduct products={products} updateProduct={updateProduct} />
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
