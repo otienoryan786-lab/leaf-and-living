@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom'
-import NavBar from '../components/NavBar'
 
 export default function Home() {
   return (
     <div className="page-shell">
-      <NavBar />
 
       <main className="container main-content">
         <section className="hero-section">

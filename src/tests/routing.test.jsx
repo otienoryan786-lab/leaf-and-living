@@ -1,18 +1,26 @@
-import { render, screen } from '@testing-library/react'
+import { test, expect } from 'vitest'
+import { render, screen, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import App from '../App'
 
 const renderAt = (path) =>
   render(<MemoryRouter initialEntries={[path]}><App /></MemoryRouter>)
 
-test('renders Home at /', () => {
+const nav = () => screen.getByRole('navigation', { name: /main navigation/i })
+
+test('Home is the active page at /', () => {
   renderAt('/')
-  expect(screen.getByRole('heading', { name: 'Home' })).toBeInTheDocument()
+  expect(within(nav()).getByRole('link', { name: 'Home' })).toHaveAttribute('aria-current', 'page')
 })
 
-test('renders Shop at /shop', () => {
+test('Shop is the active page at /shop', () => {
   renderAt('/shop')
-  expect(screen.getByRole('heading', { name: 'Shop' })).toBeInTheDocument()
+  expect(within(nav()).getByRole('link', { name: 'Shop' })).toHaveAttribute('aria-current', 'page')
+})
+
+test('Admin Portal is the active page at /admin', () => {
+  renderAt('/admin')
+  expect(within(nav()).getByRole('link', { name: 'Admin Portal' })).toHaveAttribute('aria-current', 'page')
 })
 
 test('shows Not Found for an unknown route', () => {
