@@ -1,150 +1,83 @@
- import { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 
-const CARE_LEVELS = ['All', 'Easy', 'Moderate', 'Experienced']
-
-export default function Shop({
-  products = [],
-  loading = false,
-  loadError = null,
-  onRetry,
-}) {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCare, setSelectedCare] = useState('All')
-
-  const hasActiveFilters = searchQuery.trim() !== '' || selectedCare !== 'All'
+export default function Shop({ products = [], loading, loadError, onRetry }) {
+  const [query, setQuery] = useState('')
+  const [careLevel, setCareLevel] = useState('all')
 
   const filteredProducts = useMemo(() => {
-    const normalizedQuery = searchQuery.trim().toLowerCase()
-
+    const normalizedQuery = query.trim().toLowerCase()
     return products.filter((product) => {
-      const name = (product.name || '').toLowerCase()
-      const description = (product.description || '').toLowerCase()
-      const care = (product.careLevel || product.care_level || '').toLowerCase()
-      const category = (product.category || '').toLowerCase()
-
-      const matchesSearch =
-        normalizedQuery === '' ||
-        name.includes(normalizedQuery) ||
-        description.includes(normalizedQuery) ||
-        category.includes(normalizedQuery)
-
-      const matchesCare =
-        selectedCare === 'All' || care === selectedCare.toLowerCase()
-
-      return matchesSearch && matchesCare
+      const matchesQuery = !normalizedQuery ||
+        `${product.name} ${product.category}`.toLowerCase().includes(normalizedQuery)
+      const matchesCare = careLevel === 'all' || product.careLevel === careLevel
+      return matchesQuery && matchesCare
     })
-  }, [products, searchQuery, selectedCare])
+  }, [products, query, careLevel])
 
-  const handleResetFilters = () => {
-    setSearchQuery('')
-    setSelectedCare('All')
+  const resetFilters = () => {
+    setQuery('')
+    setCareLevel('all')
   }
 
   return (
-    <div className="page-shell">
+    <section className="shop-layout page-container">
+      <aside className="shop-filters" aria-label="Product filters">
+        <label htmlFor="product-search">Search</label>
+        <input
+          id="product-search"
+          type="search"
+          placeholder="Name or category"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+        <label htmlFor="care-filter">Care level</label>
+        <select id="care-filter" value={careLevel} onChange={(event) => setCareLevel(event.target.value)}>
+          <option value="all">All levels</option>
+          <option value="Easy">Easy</option>
+          <option value="Moderate">Moderate</option>
+          <option value="Experienced">Experienced</option>
+        </select>
+        <button className="button button-outline filter-reset" type="button" onClick={resetFilters}>
+          Reset filters
+        </button>
+      </aside>
 
-      <main className="container main-content">
-        <header className="shop-header">
+      <div className="shop-results">
+        <div className="section-heading shop-heading">
           <div>
-            <h1>Shop</h1>
-            <p className="shop-subtitle">
-              Explore our collection and filter by plant care level.
-            </p>
+            <p className="eyebrow">Find your next favourite</p>
+            <h1>Shop plants</h1>
           </div>
-        </header>
-
-        <section className="filter-bar" aria-label="Search and filter plants">
-          <div className="search-box">
-            <label htmlFor="plant-search" className="sr-only">
-              Search plants
-            </label>
-            <input
-              id="plant-search"
-              type="search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search plants by name..."
-              className="search-input"
-            />
-          </div>
-
-          <div className="care-filters" role="group" aria-label="Filter by care level">
-            {CARE_LEVELS.map((level) => (
-              <button
-                key={level}
-                type="button"
-                onClick={() => setSelectedCare(level)}
-                aria-pressed={selectedCare === level}
-                className={
-                  selectedCare === level ? 'filter-pill active' : 'filter-pill'
-                }
-              >
-                {level}
-              </button>
-            ))}
-          </div>
-
-          {hasActiveFilters && (
-            <button
-              type="button"
-              onClick={handleResetFilters}
-              className="btn btn-ghost btn-sm"
-            >
-              Reset
-            </button>
-          )}
-        </section>
-
-        {!loading && !loadError && products.length > 0 && (
-          <p className="results-count" aria-live="polite">
-            Showing <strong>{filteredProducts.length}</strong> of{' '}
-            <strong>{products.length}</strong>{' '}
-            {products.length === 1 ? 'plant' : 'plants'}
+          <p className="result-count" aria-live="polite">
+            {loading ? 'Loading plants…' : `${filteredProducts.length} ${filteredProducts.length === 1 ? 'plant' : 'plants'} found`}
           </p>
+        </div>
+        {loadError && (
+          <div className="notice notice-error" role="alert">
+            <span>{loadError}</span>
+            <button className="button button-secondary" onClick={onRetry}>Try again</button>
+          </div>
         )}
-
         {loading ? (
-          <div className="state-box" role="status">
-            <p>Loading plants...</p>
-          </div>
-        ) : loadError ? (
-          <div className="state-box state-error" role="alert">
+          <p className="empty-state">Loading the plant collection…</p>
+        ) : loadError && products.length === 0 ? (
+          <div className="empty-state">
             <h2>Unable to load plants</h2>
-            <p>{typeof loadError === 'string' ? loadError : 'Something went wrong while fetching products.'}</p>
-            {onRetry && (
-              <button type="button" onClick={onRetry} className="btn btn-primary">
-                Try Again
-              </button>
-            )}
+            <p>{loadError}</p>
           </div>
-        ) : products.length === 0 ? (
-          <div className="state-box">
-            <h2>No plants available yet</h2>
-            <p>Our plant catalog is currently empty. Check back soon!</p>
-          </div>
-        ) : filteredProducts.length === 0 ? (
-          <div className="state-box">
-            <h2>No matching plants found</h2>
-            <p>
-              Try adjusting your search term or resetting your care-level filter.
-            </p>
-            <button
-              type="button"
-              onClick={handleResetFilters}
-              className="btn btn-primary"
-            >
-              Reset Filters
-            </button>
+        ) : filteredProducts.length ? (
+          <div className="product-grid">
+            {filteredProducts.map((product) => <ProductCard key={product.id} product={product} />)}
           </div>
         ) : (
-          <section className="product-grid" aria-label="Plant catalog">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </section>
+          <div className="empty-state">
+            <h2>No plants match those filters</h2>
+            <p>Try another search or reset your filters.</p>
+            <button className="button button-secondary" type="button" onClick={resetFilters}>Reset filters</button>
+          </div>
         )}
-      </main>
-    </div>
+      </div>
+    </section>
   )
 }

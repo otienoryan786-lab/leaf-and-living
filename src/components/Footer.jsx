@@ -1,8 +1,7 @@
 export default function Footer() {
-  return (
-    <footer className="footer">
-      <p className="footer__tagline">A little green. A better space.</p>
-      <p className="footer__copy">&copy; Leaf &amp; Living</p>
-    </footer>
-  )
+	return (
+		<footer className="site-footer">
+			<p>A little green. A better space.</p>
+		</footer>
+	)
 }
