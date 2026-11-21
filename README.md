@@ -44,7 +44,7 @@ npm run dev
 The original six products are saved in `db.seed.json`. To discard local product changes and restore the sample catalogue, stop JSON Server and run:
 
 ```bash
-cp db.seed.json db.json
+npm run reset-db
 ```
 
 Then start JSON Server again with `npm run server`.
