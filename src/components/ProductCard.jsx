@@ -1,7 +1,5 @@
  import { Link } from 'react-router-dom'
-
-const FALLBACK_IMAGE =
-  'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&w=600&q=80'
+import fallbackImage from '../assets/hero.png'
 
 export default function ProductCard({ product }) {
   const {
@@ -15,7 +13,7 @@ export default function ProductCard({ product }) {
     category,
   } = product
 
-  const displayImage = image || imageUrl || FALLBACK_IMAGE
+  const displayImage = image || imageUrl || fallbackImage
   const displayCare = careLevel || care_level || 'Easy'
   const numericPrice = Number(price)
   const formattedPrice = Number.isFinite(numericPrice)
@@ -23,36 +21,31 @@ export default function ProductCard({ product }) {
     : 'Price unavailable'
 
   return (
-    <article className="product-card">
-      <Link to={`/products/${id}`} className="product-card-image-wrap">
+    <article className="card product-card">
+      <Link to={`/products/${id}`} className="product-card__media">
         <img
           src={displayImage}
           alt={name}
-          className="product-card-image"
+          className="product-card__image"
           loading="lazy"
           onError={(e) => {
-            if (e.currentTarget.src !== FALLBACK_IMAGE) {
-              e.currentTarget.src = FALLBACK_IMAGE
+            if (e.currentTarget.src !== fallbackImage) {
+              e.currentTarget.src = fallbackImage
             }
           }}
         />
-        <span className={`care-badge care-${displayCare.toLowerCase()}`}>
-          {displayCare} Care
-        </span>
       </Link>
 
-      <div className="product-card-body">
-        {category && <span className="product-category">{category}</span>}
-        <h2 className="product-card-title">
-          <Link to={`/products/${id}`}>{name}</Link>
-        </h2>
-
-        <div className="product-card-footer">
-          <span className="product-price">{formattedPrice}</span>
-          <Link to={`/products/${id}`} className="btn btn-outline btn-sm">
-            View Details
-          </Link>
+      <div className="product-card__body">
+        <h3 className="product-card__title">{name}</h3>
+        {category && <p className="product-card__category">{category}</p>}
+        <div className="product-card__meta">
+          <span className={`badge badge--${displayCare.toLowerCase()}`}>{displayCare}</span>
         </div>
+        <p className="product-card__price">{formattedPrice}</p>
+        <Link to={`/products/${id}`} className="product-card__link">
+          View Details
+        </Link>
       </div>
     </article>
   )
