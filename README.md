@@ -1,67 +1,52 @@
 # Leaf & Living
 
-Leaf & Living is a React plant catalogue with a simulated JSON Server API.
-# React + Vite
+A responsive plant catalogue with an administrator portal, built as a React single page application. Visitors browse, search and filter plants; the administrator adds, edits and deletes products. Data is stored in a simulated backend (JSON Server), so saved changes survive a browser refresh.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A little green. A better space.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Home page, Shop with live search (name or category), care-level filter, reset and result count
+- Product details page for each plant
+- Admin portal: product list, add, edit (including price) and delete with confirmation
+- Validated product form with clear messages, progress, success and error feedback
+- Loading, empty-result, missing-product and request-error states
+- Client-side routing with an unknown-route page, responsive on mobile and desktop
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+React with Vite, React Router, plain CSS, JSON Server, Fetch API, Vitest and React Testing Library.
 
-## Expanding the ESLint configuration
+## Team
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Backend setup
+| Member | Responsibility |
+|---|---|
+| Ryan Otieno (team leader) | Repository, routing, layout, shared styles, integration, README |
+| Abshiro | Home, Shop, product details, product cards, search and filtering |
+| Shalom | Admin list, product form, add and edit pages, validation, delete confirmation |
+| Ajhok | JSON Server, API functions, `useProducts`, seed data, backend documentation |
 
-Install project dependencies:
+## Screenshots
 
-```bash
-npm install
-```
+_Add screenshots of Home, Shop, Product details, Admin and the form here._
 
-Start the JSON Server API in one terminal:
+## Known limitations
 
-```bash
-npm run server
-```
+- No login or access control: the admin portal is a demonstration workspace.
+- No shopping cart, checkout, payments or image uploads (outside the project scope).
+- Product images are chosen from a fixed bundled list.
+- The JSON Server backend must be running for products to load.
 
-The products endpoint is `http://localhost:3001/products`. JSON Server reads and saves product changes in `db.json`.
+## Image credits
 
-Start the React app in a second terminal:
+Photographs from [Unsplash](https://unsplash.com), used under the [Unsplash License](https://unsplash.com/license).
 
-```bash
-npm run dev
-```
+- Snake Plant: Sayan Majhi
+- Aloe Vera: David Docil
+- Peace Lily: Marta Pawlik
+- Fiddle Leaf Fig: Nick Morrison
+- Jade Plant: _photographer name_
+- Lavender: _photographer name_
+- Home hero image: _photographer name_
 
-## Reset the sample products
-
-The original six products are saved in `db.seed.json`. To discard local product changes and restore the sample catalogue, stop JSON Server and run:
-
-```bash
-npm run reset-db
-```
-
-Then start JSON Server again with `npm run server`.
-
-## Product API
-
-- `GET /products` loads all products.
-- `POST /products` creates a product.
-- `PATCH /products/:id` updates a product.
-- `DELETE /products/:id` removes a product.
-
-Products use `id`, `name`, `category`, `careLevel`, `description`, `price`, and `image` fields. The React API functions are in `src/api/productsApi.js`; `src/hooks/useProducts.js` loads products and keeps shared product state in sync after successful requests.
-
-## Checks
-
-```bash
-npm test
-npm run build
-npm run lint
-```
+The `placeholder.svg` fallback graphic was created for this project.
