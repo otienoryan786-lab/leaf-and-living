@@ -7,7 +7,7 @@
       "careLevel": "Easy",
       "description": "A beautiful, low-maintenance indoor plant.",
       "price": 850,
-      "image": "snake-plant.jpg"
+      "image": "snake-plant.svg"
     },
     {
       "id": "2",
@@ -16,7 +16,7 @@
       "careLevel": "Easy",
       "description": "A useful succulent that needs little water.",
       "price": 600,
-      "image": "aloe-vera.jpg"
+      "image": "aloe-vera.svg"
     },
     {
       "id": "3",
@@ -25,7 +25,7 @@
       "careLevel": "Moderate",
       "description": "An elegant indoor plant with beautiful flowers.",
       "price": 1200,
-      "image": "peace-lily.jpg"
+      "image": "peace-lily.svg"
     },
     {
       "id": "4",
@@ -34,7 +34,7 @@
       "careLevel": "Experienced",
       "description": "A striking plant with large green leaves.",
       "price": 2800,
-      "image": "fiddle-leaf-fig.jpg"
+      "image": "fiddle-leaf-fig.svg"
     },
     {
       "id": "5",
@@ -43,7 +43,7 @@
       "careLevel": "Easy",
       "description": "A small succulent with thick green leaves.",
       "price": 750,
-      "image": "jade-plant.jpg"
+      "image": "jade-plant.svg"
     },
     {
       "id": "6",
@@ -52,7 +52,7 @@
       "careLevel": "Moderate",
       "description": "An aromatic plant with beautiful purple flowers.",
       "price": 950,
-      "image": "lavender.jpg"
+      "image": "lavender.svg"
     }
   ]
 }
