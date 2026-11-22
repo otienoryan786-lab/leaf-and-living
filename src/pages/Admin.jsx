@@ -1,15 +1,17 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-
+import { Link, useLocation } from 'react-router-dom'
 export default function Admin({ products, loading, loadError, onRetry, deleteProduct }) {
   const [confirmingId, setConfirmingId] = useState(null)
   const [error, setError] = useState('')
-
-  const handleDelete = async (id) => {
+  const location = useLocation()
+  const [notice, setNotice] = useState(location.state?.notice || '')
+    const handleDelete = async (id) => {
     setError('')
+    setNotice('')
     try {
       await deleteProduct(id)
       setConfirmingId(null)
+      setNotice('Product deleted.')
     } catch (deleteError) {
       setError(deleteError.message || 'Could not delete the product.')
     }
@@ -25,7 +27,9 @@ export default function Admin({ products, loading, loadError, onRetry, deletePro
         <Link className="button button-primary" to="/admin/products/new">Add product <span aria-hidden="true">+</span></Link>
       </div>
       <p className="page-intro">Manage product details, prices and availability in the Leaf &amp; Living catalogue.</p>
+            {notice && <div className="notice" role="status">{notice}</div>}
       {(loadError || error) && (
+
         <div className="notice notice-error" role="alert">
           <span>{error || loadError}</span>
           {loadError && !error && (

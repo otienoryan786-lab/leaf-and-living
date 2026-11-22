@@ -8,7 +8,7 @@ export default function EditProduct({ products, loading, updateProduct }) {
 
   const handleUpdate = async (changes) => {
     await updateProduct(id, changes)
-    navigate('/admin')
+        navigate('/admin', { state: { notice: 'Product updated.' } })
   }
 
   if (loading) return <p className="empty-state page-container">Loading product…</p>
