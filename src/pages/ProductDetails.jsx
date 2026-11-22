@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 
-const fallbackImage = 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=1200&q=90'
+import { FALLBACK_IMAGE as fallbackImage, resolveImage } from '../utils/images'
 
 export default function ProductDetails({ products = [], loading, loadError, onRetry }) {
   const { id } = useParams()
@@ -27,7 +27,7 @@ export default function ProductDetails({ products = [], loading, loadError, onRe
     )
   }
 
-  const image = product.image?.startsWith('http') ? product.image : fallbackImage
+  const image = resolveImage(product.image)
 
   return (
     <section className="product-detail page-container">
