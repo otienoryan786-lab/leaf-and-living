@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+ import { Link } from 'react-router-dom'
+import heroImage from '../assets/hero.png'
 
 export default function Home() {
   return (

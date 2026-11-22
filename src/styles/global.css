@@ -184,3 +184,129 @@ p { line-height: 1.7; }
 @media (prefers-reduced-motion: reduce) {
 	*, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+ /* ---------- Home Page (PDF Design) ---------- */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.home-hero,
+.home-about {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+.home-hero h1 {
+  font-size: 2.25rem;
+  margin-bottom: var(--space-2);
+}
+.home-hero__subtitle {
+  margin: 0 0 var(--space-3);
+  max-width: 48ch;
+}
+.home-hero__actions {
+  margin-bottom: var(--space-4);
+}
+.home-hero__media {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: #DCE6DF;
+}
+.home-hero__image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.home-about h2 {
+  font-size: 1.15rem;
+  margin-bottom: var(--space-2);
+}
+.home-about p {
+  margin: 0;
+}
+
+/* ---------- Shop Page & Sidebar (PDF Design) ---------- */
+.shop-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+.shop-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.shop-sidebar__reset {
+  width: 100%;
+  text-align: center;
+}
+.shop-results__count {
+  margin: 0 0 var(--space-3);
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+.shop-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* ---------- Product Card (PDF Design) ---------- */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.product-card__media {
+  display: block;
+  border-radius: calc(var(--radius) - 4px);
+  overflow: hidden;
+  background: #DCE6DF;
+}
+.product-card__image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+}
+.product-card__title {
+  font-size: 1.05rem;
+  margin: 0;
+}
+.product-card__category {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #5a6b60;
+}
+.product-card__meta {
+  margin: var(--space-1) 0;
+}
+.product-card__price {
+  margin: 0;
+  font-weight: bold;
+}
+.product-card__link {
+  margin-top: auto;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 860px) {
+  .shop-layout {
+    grid-template-columns: 1fr;
+  }
+  .shop-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .shop-grid {
+    grid-template-columns: 1fr;
+  }
+}
