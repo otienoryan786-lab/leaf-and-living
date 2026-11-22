@@ -1,0 +1,58 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Snake Plant",
+      "category": "Indoor",
+      "careLevel": "Easy",
+      "description": "A beautiful, low-maintenance indoor plant.",
+      "price": 850,
+      "image": "snake-plant.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Aloe Vera",
+      "category": "Succulents",
+      "careLevel": "Easy",
+      "description": "A useful succulent that needs little water.",
+      "price": 600,
+      "image": "aloe-vera.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Peace Lily",
+      "category": "Indoor",
+      "careLevel": "Moderate",
+      "description": "An elegant indoor plant with beautiful flowers.",
+      "price": 1200,
+      "image": "peace-lily.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Fiddle Leaf Fig",
+      "category": "Indoor",
+      "careLevel": "Experienced",
+      "description": "A striking plant with large green leaves.",
+      "price": 2800,
+      "image": "fiddle-leaf-fig.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Jade Plant",
+      "category": "Succulents",
+      "careLevel": "Easy",
+      "description": "A small succulent with thick green leaves.",
+      "price": 750,
+      "image": "jade-plant.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Lavender",
+      "category": "Outdoor",
+      "careLevel": "Moderate",
+      "description": "An aromatic plant with beautiful purple flowers.",
+      "price": 950,
+      "image": "lavender.jpg"
+    }
+  ]
+}
