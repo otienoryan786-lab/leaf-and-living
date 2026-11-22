@@ -17,6 +17,45 @@ A responsive plant catalogue with an administrator portal, built as a React sing
 
 React with Vite, React Router, plain CSS, JSON Server, Fetch API, Vitest and React Testing Library.
 
+## Run the application and backend
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the API and frontend in separate terminals:
+
+```bash
+npm run server
+```
+
+```bash
+npm run dev
+```
+
+The JSON Server API is available at `http://localhost:3001/products`. It reads and persists changes to `db.json`.
+
+### Reset sample products
+
+Stop the API server, then restore the six sample products from `db.seed.json`:
+
+```bash
+npm run reset-db
+```
+
+Restart the API with `npm run server`.
+
+### Product API routes
+
+- `GET /products` lists products.
+- `POST /products` creates a product.
+- `PATCH /products/:id` updates a product.
+- `DELETE /products/:id` deletes a product.
+
+The API functions live in `src/api/productsApi.js`; `src/hooks/useProducts.js` owns the shared product state and loading, retry, and CRUD behavior.
+
 ## Team
 
 | Member | Responsibility |
