@@ -14,7 +14,7 @@ export default function Home() {
         </div>
         <img
           className="home-hero-image"
-          src="/images/hero.jpg"
+          src="/images/hero-plants.jpg"
           alt="Snake plant, aloe vera and fiddle leaf fig in terracotta pots"
         />
       </section>

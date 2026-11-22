@@ -34,7 +34,7 @@
       "careLevel": "Experienced",
       "description": "A striking plant with large green leaves.",
       "price": 2800,
-      "image": "fiddle-leaf-fig.svg"
+      "image": "fiddle-leaf-fig.jpg"
     },
     {
       "id": "5",
@@ -43,7 +43,7 @@
       "careLevel": "Easy",
       "description": "A small succulent with thick green leaves.",
       "price": 750,
-      "image": "jade-plant.svg"
+      "image": "jade-plant.jpg"
     },
     {
       "id": "6",
@@ -52,7 +52,7 @@
       "careLevel": "Moderate",
       "description": "An aromatic plant with beautiful purple flowers.",
       "price": 950,
-      "image": "lavender.svg"
+      "image": "lavender.jpg"
     }
   ]
 }
