@@ -1,5 +1,4 @@
- import { Link } from 'react-router-dom'
-import heroImage from '../assets/hero.png'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
   return (
@@ -15,8 +14,8 @@ export default function Home() {
         </div>
         <img
           className="home-hero-image"
-          src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=90"
-          alt="Sunlit green houseplants arranged in a bright home"
+          src="/images/hero-plants.jpg"
+          alt="Snake plant, aloe vera and fiddle leaf fig in terracotta pots"
         />
       </section>
       <section className="about-section">

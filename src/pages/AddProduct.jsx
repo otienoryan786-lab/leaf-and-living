@@ -6,7 +6,7 @@ export default function AddProduct({ addProduct }) {
 
   const handleAdd = async (product) => {
     await addProduct(product)
-    navigate('/admin')
+        navigate('/admin', { state: { notice: 'Product added.' } })
   }
 
   return (
