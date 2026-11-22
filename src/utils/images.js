@@ -1,16 +1,16 @@
 // Bundled plant images live in public/images. Admins pick from this list (no uploads).
 export const IMAGE_OPTIONS = [
-  'snake-plant.svg',
-  'aloe-vera.svg',
-  'peace-lily.svg',
-  'fiddle-leaf-fig.svg',
-  'jade-plant.svg',
-  'lavender.svg',
+  'snake-plant.jpg',
+  'aloe-vera.jpg',
+  'peace-lily.jpg',
+  'fiddle-leaf-fig.jpg',
+  'jade-plant.jpg',
+  'lavender.jpg',
 ]
 
-export const FALLBACK_IMAGE = '/images/placeholder.svg'
+export const FALLBACK_IMAGE = '/images/placeholder.jpg'
 
-// Accepts a filename ("snake-plant.svg"), a path ("/images/x.svg") or a full URL.
+// Accepts a filename ("snake-plant.jpg"), a path ("/images/x.jpg") or a full URL.
 export function resolveImage(image) {
   if (!image) return FALLBACK_IMAGE
   if (image.startsWith('http') || image.startsWith('/')) return image

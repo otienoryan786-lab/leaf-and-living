@@ -7,7 +7,7 @@
       "careLevel": "Easy",
       "description": "A beautiful, low-maintenance indoor plant.",
       "price": 850,
-      "image": "snake-plant.svg"
+      "image": "snake-plant.jpg"
     },
     {
       "id": "2",
@@ -16,7 +16,7 @@
       "careLevel": "Easy",
       "description": "A useful succulent that needs little water.",
       "price": 600,
-      "image": "aloe-vera.svg"
+      "image": "aloe-vera.jpg"
     },
     {
       "id": "3",
@@ -25,7 +25,7 @@
       "careLevel": "Moderate",
       "description": "An elegant indoor plant with beautiful flowers.",
       "price": 1200,
-      "image": "peace-lily.svg"
+      "image": "peace-lily.jpg"
     },
     {
       "id": "4",
